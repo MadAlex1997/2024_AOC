@@ -1,6 +1,7 @@
-
+from time import perf_counter_ns
 if __name__ == "__main__":
     # Get data
+    t1 = perf_counter_ns()
     with open("input") as f:
         data = f.readlines()
     
@@ -22,5 +23,15 @@ if __name__ == "__main__":
         sum_of_difference += abs(rhs[i] - lhs[i])
     
     print(sum_of_difference)
+    similarity = 0
+    
+    for r in rhs:
+        if r in lhs:
+            similarity += r
+    
+    print(similarity)
+
+    t2 = perf_counter_ns()
+    print((t2-t1)*10**-3)
 
 
